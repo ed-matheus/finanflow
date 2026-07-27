@@ -103,7 +103,7 @@ const Dashboard = () => {
   return (
     <>
       <Header />
-      <main className="mx-4.5 my-2">
+      <main className="mx-4.5 my-2 pb-20">
         <BalanceCard />
 
         <button className="flex items-center gap-3 p-4 mt-4 w-full rounded-2xl bg-green-100">
