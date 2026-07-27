@@ -1,0 +1,29 @@
+@import "tailwindcss";
+/* @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap'); */
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  /* font-family: "Roboto", sans-serif; */
+}
+
+progress {
+  appearance: none;
+}
+
+progress::-webkit-progress-bar {
+  background: #e5e7eb; 
+  border-radius: 9999px;
+}
+
+progress::-webkit-progress-value {
+  /* background: #3b82f6; */
+  border-radius: 9999px;
+}
+
+progress::-moz-progress-bar {
+  /* background: #3b82f6; */
+  border-radius: 9999px;
+}
