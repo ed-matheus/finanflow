@@ -5,33 +5,31 @@ import { GrTransaction } from "react-icons/gr";
 import { IoPersonCircleOutline } from "react-icons/io5";
 import { IoPersonCircle } from "react-icons/io5";
 import { MdLogout } from "react-icons/md";
+import { NavLink } from "react-router-dom";
 
 const BottomNav = () => {
   const navItems = [
     {
       id: 1,
-      icon: <GoHome size={25} />,
+      icon: GoHome,
+      iconFill: GoHomeFill,
       name: "Início",
       link: '/',
     },
     {
       id: 2,
-      icon: <GrTransaction size={25} />,
+      icon: GrTransaction,
+      iconFill: GrTransaction,
       name: "Transações",
       link: '/transactions',
     },
     {
       id: 3,
-      icon: <IoPersonCircleOutline size={25} />,
+      icon: IoPersonCircleOutline,
+      iconFill: IoPersonCircle,
       name: "Perfil",
       link: '/profile',
-    },
-    {
-      id: 4,
-      icon: <MdLogout size={25} />,
-      name: "Sair",
-      link: '/login',
-    },
+    }
   ]
 
   return (
@@ -39,12 +37,26 @@ const BottomNav = () => {
       <ul className='flex items-center justify-between text-sm font-medium'>
         {
           navItems.map(item => (
-            <li
-            key={item.id}
-            className={`flex flex-col items-center text-gray-400 hover:${"" ? "" : ""}`}
-            >
-              {item.icon}
-              {item.name}
+            <li key={item.id}>
+              <NavLink
+                to={item.link}
+                className={({ isActive }) => 
+                  `flex flex-col items-center ${
+                    isActive ? "text-green-500" : "text-gray-400"
+                  }`
+                }
+              >
+                {({ isActive }) => {
+                  const Icon = isActive ? item.iconFill : item.icon
+
+                  return (
+                    <>
+                      <Icon size={22} />
+                      <span>{item.name}</span>
+                    </>
+                  )
+                }}
+              </NavLink>
             </li>
           ))
         }
