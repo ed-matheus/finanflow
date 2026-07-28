@@ -27,12 +27,12 @@ const CategoryExpenses = ({ categoryName, percent, expense, bgColor, barColor, i
         </div>
       </div>
 
-      {/* Value */}
-      <span className="font-medium">
+      {/* Amount */}
+      <span className="font-medium text-right w-20">
         R$ {expense}
       </span>
 
-      <IoIosArrowForward size={16} color="gray" />
+      {/* <IoIosArrowForward size={16} color="gray" /> */}
     </div>
   )
 }

@@ -138,7 +138,6 @@ const Dashboard = () => {
               ))
             }
           </ul>
-
         </section>
 
         {/* Transactions */}
