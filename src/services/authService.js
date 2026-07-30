@@ -1,13 +1,26 @@
 import { auth } from "../firebase/firebase"
-import { createUserWithEmailAndPassword } from "firebase/auth"
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth"
 
-const register = async(email, password) => {
+const register = async (email, password) => {
   // console.log(email, password)
   const userCredential = await createUserWithEmailAndPassword(auth, email, password)
 
   return userCredential.user;
 }
 
-const 
+const login = async (email, password) => {
+  try {
+    const userCredential = await signInWithEmailAndPassword(auth, email, password)
+    
+    return userCredential.user;
 
-export { register }
+  } catch (error) {
+    if (error.code === "auth/invalid-credential") {
+      throw new Error("Email ou senha incorretos.")
+    }
+
+    throw error
+  }
+}
+
+export { register, login }
