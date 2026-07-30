@@ -1,11 +1,16 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { useState } from "react"
+import { register } from "../../services/authService"
+import { onAuthStateChanged } from "firebase/auth"
+import { auth } from "../../firebase/firebase"
 
 // Components
 import Input from "../../components/ui/Input"
 import Button from "../../components/ui/Button"
 
 const Register = () => {
+  const navigate = useNavigate()
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -23,16 +28,32 @@ const Register = () => {
     }))
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault()
 
     // validation here
     if (formData.confirmPassword !== formData.password) {
       alert("As senhas estão diferentes. Corrija.")
+
     } else if (formData.password.length < 6) {
       alert("A senha precisa ter 6 caracteres ou mais.")
+      
     } else {
       console.log("Dados recebidos:", formData)
+
+      const user = await register(formData.email, formData.password)
+      console.log(user)
+      
+      navigate("/") 
+      
+      // onAuthStateChanged(auth, (user) => {
+      //   if (user) {
+      //     navigate("/")          
+      //   } else {
+      //     alert("Ocorreu um erro. Tente novamente.")
+      //   }
+      // })
+
       setFormData({
         name: "",
         email: "",
