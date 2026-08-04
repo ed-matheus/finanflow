@@ -1,5 +1,5 @@
 import { auth } from "../firebase/firebase"
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth"
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth"
 
 const register = async (email, password) => {
   // console.log(email, password)
@@ -23,4 +23,14 @@ const login = async (email, password) => {
   }
 }
 
-export { register, login }
+const logout = async () => {
+  try {
+    await signOut(auth)
+    console.log("Deslogado com sucesso.")
+
+  } catch (error) {
+    console.error("Houve um erro.")
+  }
+}
+
+export { register, login, logout }

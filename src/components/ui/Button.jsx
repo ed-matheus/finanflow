@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Button = ({ text }) => {
+const Button = ({ text, type }) => {
   return (
     <button
-      type="submit"
+      type={type}
       className="rounded-lg border mt-2 p-2 font-medium text-white bg-green-500 hover:bg-green-600 hover:cursor-pointer"
     >
       {text}

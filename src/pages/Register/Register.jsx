@@ -114,7 +114,7 @@ const Register = () => {
           placeholder="Confirme sua senha"
         />
 
-        <Button text={"Criar conta"} />
+        <Button text={"Criar conta"} type={"submit"} />
       </form>
 
       <Link to={"/login"} className="font-medium hover:text-green-600">

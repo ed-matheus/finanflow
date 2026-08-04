@@ -69,7 +69,7 @@ const Login = () => {
           placeholder="Digite sua senha"
         />
 
-        <Button text={"Entrar"} />
+        <Button text={"Entrar"} type={"submit"} />
       </form>
 
       <span className="font-medium">
